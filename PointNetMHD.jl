@@ -419,15 +419,3 @@ plot_losses()
 #     - Channel 3 Top 5% Avg. MSE: 0.002893676981329918
 #     - Channel 3 Top 1% Avg. MSE: 0.004605326801538467
 # ============================================================
-
-# Yes, your reasoning is exactly correct for this specific type of problem.
-
-# You are forcing the model to become scale-invariant.
-
-# By normalizing every file (both for training and validation) using its own min and max, you are effectively doing two things:
-
-# Removing Scale: You are intentionally throwing away the information about the reactor's absolute size.
-
-# Forcing Shape Recognition: You are presenting every single reactor to the model on the exact same scale (e.g., [-1, 1]).
-
-# This forces the model to learn how to approximate the equilibria based only on the relative geometry (the shape), because that is the only meaningful information that's left.
